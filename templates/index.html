@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt Scorer - Datadon Incentive System</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📸 Receipt Scorer</h1>
+            <p class="subtitle">Upload a receipt image to get your incentive score</p>
+        </header>
+
+        <div class="upload-section">
+            <div class="mode-switch">
+                <button class="mode-btn active" id="singleMode">Single Image</button>
+                <button class="mode-btn" id="batchMode">Batch Upload</button>
+            </div>
+
+            <div class="upload-box" id="uploadBox">
+                <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                <input type="file" id="batchFileInput" accept="image/*" multiple style="display: none;">
+                <div class="upload-content">
+                    <div class="upload-icon">📤</div>
+                    <p class="upload-text">Click to upload or drag & drop</p>
+                    <p class="upload-hint" id="uploadHint">Supports: JPG, PNG, WEBP, GIF, BMP, TIFF</p>
+                </div>
+            </div>
+
+            <div id="preview" class="preview" style="display: none;">
+                <img id="previewImage" alt="Preview">
+                <p id="fileName"></p>
+            </div>
+
+            <div id="batchPreview" class="batch-preview" style="display: none;">
+                <p id="batchFileCount"></p>
+                <div id="batchFileList" class="batch-file-list"></div>
+            </div>
+
+            <button id="scoreButton" class="score-button" style="display: none;">
+                Score Receipt
+            </button>
+        </div>
+
+        <div id="loading" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Analyzing receipt...</p>
+        </div>
+
+        <div id="result" class="result" style="display: none;">
+            <div class="score-card">
+                <div class="score-header">
+                    <div class="score-points">
+                        <span class="points-number" id="points">--</span>
+                        <span class="points-label">/100</span>
+                    </div>
+                    <div class="score-band" id="band">--</div>
+                </div>
+
+                <div class="score-details">
+                    <div class="detail-item">
+                        <span class="detail-label">📋 Reason:</span>
+                        <span class="detail-value" id="reason">--</span>
+                    </div>
+
+                    <div class="detail-item encouragement-item">
+                        <span class="detail-label">💬 Encouragement:</span>
+                        <span class="detail-value" id="encouragement">--</span>
+                    </div>
+
+                    <div class="detail-item tip-item" id="tipItem" style="display: none;">
+                        <span class="detail-label">💡 Tip:</span>
+                        <span class="detail-value" id="tip">--</span>
+                    </div>
+                </div>
+            </div>
+
+            <button id="newUploadButton" class="new-upload-button">
+                Upload Another Receipt
+            </button>
+        </div>
+
+        <div id="batchResult" class="batch-result" style="display: none;">
+            <h2>Batch Scoring Complete!</h2>
+            <div class="batch-summary">
+                <span class="batch-stat success"><strong id="batchSuccess">0</strong> Successful</span>
+                <span class="batch-stat failed"><strong id="batchFailed">0</strong> Failed</span>
+            </div>
+            <div id="batchResultsList" class="batch-results-list"></div>
+            <button id="newBatchButton" class="new-upload-button">
+                Upload More Receipts
+            </button>
+        </div>
+
+        <div id="error" class="error" style="display: none;">
+            <p id="errorMessage"></p>
+            <button id="retryButton" class="retry-button">Try Again</button>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
